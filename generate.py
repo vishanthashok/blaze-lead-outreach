@@ -49,7 +49,8 @@ def generate(rows, template_path="prompts/outreach.md"):
         if not p:
             row["llm_status"] = "skipped: no LLM API key in .env"; continue
         if not row["signal"]:
-            row["llm_status"] = "skipped: no signal found (no opener without a real hook)"; continue
+            row["llm_status"] = "skipped: no signal found (no opener without a real hook)"
+            print(f"  {row['business_name'][:38]:<38} skipped: no signal", flush=True); continue
         o, err = None, ""
         for _ in range(3):  # retry on bad JSON or rule violations
             try:
@@ -65,4 +66,5 @@ def generate(rows, template_path="prompts/outreach.md"):
             row["llm_status"] = f"ok: {p[4]}/{p[3]}"
         else:
             row["llm_status"] = err
+        print(f"  {row['business_name'][:38]:<38} {row['llm_status']}", flush=True)
     return p
