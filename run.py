@@ -9,6 +9,10 @@ COLS = ["business_name", "website", "city", "phone", "email", "missing_contact",
 
 def main():
     load_dotenv()
+    import sys
+    if "--regen-only" in sys.argv:  # reuse existing CSV, only redo LLM columns
+        kept = list(csv.DictReader(open("output/austin_pm_leads.csv")))
+        p = generate.generate(kept); write(kept, p); return
     rows = scrape.run()
     kept, seen = [], set()
     for r in rows:
@@ -20,7 +24,9 @@ def main():
         seen.add(key); r["phone"] and seen.add(r["phone"])
         r["missing_contact"] = "yes" if not (r["phone"] or r["email"]) else "no"
         kept.append(r)
-    p = generate.generate(kept)
+    p = generate.generate(kept); write(kept, p)
+
+def write(kept, p):
     os.makedirs("output", exist_ok=True)
     with open("output/austin_pm_leads.csv", "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=COLS, extrasaction="ignore"); w.writeheader(); w.writerows(kept)
