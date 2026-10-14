@@ -1,0 +1,34 @@
+crawl https://1836propertymanagement.com/
+crawl https://www.stoneoakmgmt.com/
+crawl https://www.austinpropertymanagement.com/
+crawl https://www.austinpropertymanagementinc.com/
+crawl https://austinpropertyconnections.com/
+crawl https://www.512re.com/
+crawl https://www.ramaustin.com/
+crawl https://www.austin-property.management/
+crawl https://ericksonandassoc.com/
+crawl https://twelveriversmanagement.com/
+crawl https://keyrenteraustin.com/
+crawl https://www.andrukpropertymanagement.com/
+crawl https://www.goodneighborpm.com/
+crawl https://www.realpropertymanagementallconnect.com/
+crawl https://www.ziprent.com/
+crawl https://www.flatfeelandlord.com/
+crawl https://www.peakpathpm.com/
+crawl https://www.stetson.management/
+crawl https://www.512-society.com/
+crawl https://www.admorpm.com/
+crawl https://www.austinsbestpm.com/
+crawl https://austin.drivenpm.com/
+crawl https://www.austinresidentialmanagement.com/
+crawl https://austin-propertymanagement.com/
+crawl https://www.dagwoodproperties.com/property-management/
+crawl https://www.fivestarvhr.com/
+crawl https://rollingwoodmanagement.com/
+crawl https://texasbmg.com/
+crawl https://www.crosstownproperties.com/
+drop https://twelveriversmanagement.com/ - http 401
+drop https://rollingwoodmanagement.com/ - http 202
+
+27 leads -> output/austin_pm_leads.csv
+LLM: NO API KEY FOUND - outreach columns left blank. Add a key to .env and rerun.
